@@ -3,6 +3,7 @@ import { Button } from "../../components/button";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../lib/axios";
+import { CreateImportantLinkModal } from "./create-important-link-modal";
 
 interface Link {
   id: string;
@@ -13,6 +14,16 @@ interface Link {
 export function ImportantLinks() {
   const { trip_id } = useParams();
   const [importantLinks, setImportantLinks] = useState<Link[]>([]);
+  const [isCreateImportantLinkOpen, setIsCreateImportantLinkOpen] =
+    useState(false);
+
+  function openCreateImportantLinkModal() {
+    setIsCreateImportantLinkOpen(true);
+  }
+
+  function closeCreateImportantLinkModal() {
+    setIsCreateImportantLinkOpen(false);
+  }
 
   useEffect(() => {
     api
@@ -45,10 +56,20 @@ export function ImportantLinks() {
         );
       })}
 
-      <Button variant="secondary" size="full">
+      <Button
+        onClick={openCreateImportantLinkModal}
+        variant="secondary"
+        size="full"
+      >
         <Plus className="size-5" />
         Cadastrar novo link
       </Button>
+
+      {isCreateImportantLinkOpen && (
+        <CreateImportantLinkModal
+          closeCreateImportantLinkModal={closeCreateImportantLinkModal}
+        />
+      )}
     </div>
   );
 }
