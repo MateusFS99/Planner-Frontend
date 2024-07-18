@@ -6,7 +6,7 @@ This is the frontend of the Planner application, developed with React and TypeSc
 
 ## About 🎯
 
-The planner-ui is responsible for providing the user interface for the Planner application, allowing users to manage their trips, activities, links and participants through an intuitive and responsive web application.
+The planner-ui is responsible for providing the user interface for the Planner application with an intuitive and responsive web application.
 
 ## Technologies 💻
 
